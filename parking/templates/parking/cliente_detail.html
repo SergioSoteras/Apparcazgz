@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>{{cliente.nombre}}</title>
+{% endblock %}
+{% block content %}
+  <h1>{{cliente.dni}}</h1>
+  <br>Nombre : {{cliente.nombre}}
+  <br>Apellidos : {{cliente.apellidos}}
+  <br>Vehiculo: {{cliente.vehiculo}}
+  
+{% endblock %}
