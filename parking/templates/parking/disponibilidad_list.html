@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Listado de Disponibilidad de las Plazas</title>
+{% endblock %}
+{% block content %}
+
+    <h2>Planta 1: </h2>
+    <ul>
+        {% for dispobilidad in object_list %}
+            
+            <li>{{disponibilidad.plaza}}</li>
+            
+        {% endfor %}
+        </ul>
+        <div class="grid-container">
+            <div class="p11" id="disp">Plaza 1</div>
+            <div class="p12" id="nodisp">Plaza 2</div>
+            <div class="p13" id="disp">Plaza 3</div>  
+            <div class="p14" id="disp">Plaza 4</div>
+            <div class="p15" id="disp">Plaza 5</div>
+            <div class="p16" id="nodisp">Plaza 6</div>  
+            <div class="p17" id="nodisp">Plaza 7</div>
+            <div class="nada1"></div>
+            <div class="p18" id="disp">Plaza 8</div>
+            <div class="p19" id="disp">Plaza 9</div> 
+            <div class="p110" id="nodisp">Plaza 10</div>
+            <div class="p111" id="disp">Plaza 11</div>
+            <div class="p112" id="nodisp">Plaza 12</div>
+            <div class="p113" id="disp">Plaza 13</div> 
+            <div class="nada2"></div> 
+            <div class="entrada">ENTRADA</div>
+            <div class="next">
+                <div style="transform: rotate(90deg);justify-content: center;align-items: center;">PLANTA&nbsp;2</div>
+            </div>
+            <div class="pasillo">PASILLO</div>   
+        </div>
+        <h2 style="background-color: white;">Planta 2:</h2>
+    <ul>
+        {% for dispobilidad in object_list %}
+            
+            <li>{{disponibilidad.plaza}}</li>
+            
+        {% endfor %}
+        <div class="grid-container">
+            <div class="p11" id="disp">Plaza 1</div>
+            <div class="p12" id="nodisp">Plaza 2</div>
+            <div class="p13" id="disp">Plaza 3</div>  
+            <div class="p14" id="disp">Plaza 4</div>
+            <div class="p15" id="disp">Plaza 5</div>
+            <div class="p16" id="nodisp">Plaza 6</div>  
+            <div class="p17" id="nodisp">Plaza 7</div>
+            <div class="nada1"></div>
+            <div class="p18" id="disp">Plaza 8</div>
+            <div class="p19" id="disp">Plaza 9</div> 
+            <div class="p110" id="nodisp">Plaza 10</div>
+            <div class="p111" id="disp">Plaza 11</div>
+            <div class="p112" id="nodisp">Plaza 12</div>
+            <div class="p113" id="disp">Plaza 13</div> 
+            <div class="nada2"></div> 
+            <div class="entrada">ENTRADA</div>
+            <div class="next">
+                <div style="transform: rotate(90deg);justify-content: center;align-items: center;">PLANTA&nbsp;2</div>
+            </div>
+            <div class="pasillo">PASILLO</div>   
+        </div>
+    {% if is_paginated %}
+    <div class="pagination">
+        <span class="page-links">
+            {% if page_obj.has_previous %}
+                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Anterior --</a>
+            {% endif %}
+            <span class="page-current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
+            {% if page_obj.has_next %}
+                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">-- Siguiente</a>
+            {% endif %}
+        </span>
+    </div>
+{% endif %}
+{% endblock %}

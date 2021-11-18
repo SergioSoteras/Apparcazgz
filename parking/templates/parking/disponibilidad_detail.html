@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>{{disponibilidad.plaza}}</title>
+{% endblock %}
+{% block content %}
+  <h1>{{disponibilidad.plaza.planta}}-{{disponibilidad.plaza.numero}}</h1>
+  <br>Cliente : {{disponibilidad.cliente.nombre}} {{disponibilidad.cliente.apellidos}}
+  <br>Estado : {{disponibilidad.estado}}
+  
+{% endblock %}

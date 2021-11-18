@@ -47,7 +47,7 @@ class ClienteDetailView(generic.DetailView):
 #lista clientes
 class ClientesListView(generic.ListView):
     '''
-    Vista generica para nuestro listado de autores
+    Vista generica para nuestro listado de clientes
     '''
     model = Cliente
     paginate_by = 10
@@ -93,3 +93,25 @@ class EliminarCliente(generic.DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(EliminarCliente, self).delete(request, *args, **kwargs)
+
+#vista de disponibilidad
+class DisponibilidadDetailView(generic.DetailView):
+    model = Disponibilidad
+    
+#lista disponibilidad
+class DisponibilidadListView(generic.ListView):
+    '''
+    Vista generica para nuestra lista de disponibilidad de las plazas
+    '''
+    model = Disponibilidad
+    paginate_by = 15
+
+# Modificar Disponibilidad con SuccessMesaageMixin para mensaje de éxito.
+#Solo el admin, debes estar logueado
+#@login required
+class ModificarDisponibilidad(SuccessMessageMixin, generic.UpdateView):
+    model = Disponibilidad
+    fields = '__all__'
+    template_name = 'modificar_disponibilidad.html'
+    success_url = '/'
+    success_message = "%(plaza)s  se ha modificado correctamente"
