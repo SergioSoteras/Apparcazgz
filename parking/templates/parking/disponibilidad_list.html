@@ -3,15 +3,19 @@
     <title>Listado de Disponibilidad de las Plazas</title>
 {% endblock %}
 {% block content %}
-
+<!--
     <h2>Planta 1: </h2>
     <ul>
-        {% for dispobilidad in object_list %}
+        {% for disponibilidad in object_list %}
             
-            <li>{{disponibilidad.plaza}}</li>
+            <li><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+              </svg></a>
+              <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza Nº{{disponibilidad}}</a></li>
             
         {% endfor %}
         </ul>
+
         <div class="grid-container">
             <div class="p11" id="disp">Plaza 1</div>
             <div class="p12" id="nodisp">Plaza 2</div>
@@ -34,35 +38,244 @@
             </div>
             <div class="pasillo">PASILLO</div>   
         </div>
-        <h2 style="background-color: white;">Planta 2:</h2>
-    <ul>
-        {% for dispobilidad in object_list %}
-            
-            <li>{{disponibilidad.plaza}}</li>
-            
+-->
+        <h2>Planta 1:</h2>
+        <div class="grid-container">
+            <div class="nada1"></div>
+            <div class="nada2"></div> 
+            <div class="entrada">ENTRADA</div>
+            <div class="next">
+                <div style="transform: rotate(90deg);justify-content: center;align-items: center;">PLANTA&nbsp;2</div>
+            </div>
+            <div class="pasillo">PASILLO</div>   
+        {% for disponibilidad in object_list %}
+        {% if disponibilidad.id == 1 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p11" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p11" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 2 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p12" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p12" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 3 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p13" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p13" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 4 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p14" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p14" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 5 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p15" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p15" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 6 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p16" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p16" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 7 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p17" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p17" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 8 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p18" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p18" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 9 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p19" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p19" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 10 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p110" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p110" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza &nbsp;Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 11 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p111" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p111" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 12 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p112" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p112" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        {% if disponibilidad.id == 13 %}
+            {% if disponibilidad.estado == 'd' %}
+            <div class="p113" id="disp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% else %}
+            <div class="p113" id="nodisp">
+                <a href="{%url 'info_disponibilidad' disponibilidad.id %}">Plaza Nº{{disponibilidad.plaza.numero}}</a>
+                <br><a href={% url 'modificar_disponibilidad' disponibilidad.id %}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg></a>                 
+            </div>
+            {% endif %}
+        {% else %}
+        <!--Cerramos todos los if antes del primero, son 12-->
+        {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+        <!--Cerramos el primer if-->
+        {% endif %}
         {% endfor %}
-        <div class="grid-container">
-            <div class="p11" id="disp">Plaza 1</div>
-            <div class="p12" id="nodisp">Plaza 2</div>
-            <div class="p13" id="disp">Plaza 3</div>  
-            <div class="p14" id="disp">Plaza 4</div>
-            <div class="p15" id="disp">Plaza 5</div>
-            <div class="p16" id="nodisp">Plaza 6</div>  
-            <div class="p17" id="nodisp">Plaza 7</div>
-            <div class="nada1"></div>
-            <div class="p18" id="disp">Plaza 8</div>
-            <div class="p19" id="disp">Plaza 9</div> 
-            <div class="p110" id="nodisp">Plaza 10</div>
-            <div class="p111" id="disp">Plaza 11</div>
-            <div class="p112" id="nodisp">Plaza 12</div>
-            <div class="p113" id="disp">Plaza 13</div> 
-            <div class="nada2"></div> 
-            <div class="entrada">ENTRADA</div>
-            <div class="next">
-                <div style="transform: rotate(90deg);justify-content: center;align-items: center;">PLANTA&nbsp;2</div>
-            </div>
-            <div class="pasillo">PASILLO</div>   
-        </div>
+        
     {% if is_paginated %}
     <div class="pagination">
         <span class="page-links">

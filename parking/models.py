@@ -9,7 +9,7 @@ class Plaza(models.Model):
     numero = models.IntegerField(blank=False,null=False)
 
     def __str__(self):
-        return f'{self.planta} {self.numero}'
+        return f'{self.planta} - {self.numero}'
     
     class Meta:
         pass

@@ -113,5 +113,5 @@ class ModificarDisponibilidad(SuccessMessageMixin, generic.UpdateView):
     model = Disponibilidad
     fields = '__all__'
     template_name = 'modificar_disponibilidad.html'
-    success_url = '/'
-    success_message = "%(plaza)s  se ha modificado correctamente"
+    success_url = '/parking/disponibilidad/'
+    success_message = "Plaza %(plaza)s  se ha modificado correctamente"
