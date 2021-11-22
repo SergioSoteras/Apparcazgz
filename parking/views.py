@@ -32,6 +32,7 @@ def indice(request):
     
     datos = {'autor':'Sergio Soteras',
             'num_disponibles': num_disponibles,
+            'coords': '41.6524426,-0.8855355',
             }
 
     # Number of visits to this view, as counted in the session variable.
@@ -104,7 +105,7 @@ class DisponibilidadListView(generic.ListView):
     Vista generica para nuestra lista de disponibilidad de las plazas
     '''
     model = Disponibilidad
-    paginate_by = 15
+    paginate_by = 27
 
 # Modificar Disponibilidad con SuccessMesaageMixin para mensaje de éxito.
 #Solo el admin, debes estar logueado
