@@ -23,7 +23,9 @@ urlpatterns = [
     path('contacto', contacto, name='contacto'),
     path('parking/', include('parking.urls')),
     path('', indice, name='indice'),
-
+    # para autenticación
+    path('accounts/', 
+        include('django.contrib.auth.urls')),
 
     
 ]

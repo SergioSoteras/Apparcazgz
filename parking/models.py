@@ -22,10 +22,12 @@ class Cliente(models.Model):
     nombre = models.CharField(max_length=30)
     apellidos = models.CharField(max_length=100)
     vehiculo = models.CharField(max_length=100)
+    plaza = models.ForeignKey(Plaza, on_delete=models.RESTRICT,null=True,blank=True)
 
     def __str__(self):
         return f'{self.nombre} {self.apellidos}'
 
+    
     class Meta:
         pass
 class Disponibilidad(models.Model):

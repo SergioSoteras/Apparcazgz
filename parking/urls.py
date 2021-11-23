@@ -11,6 +11,6 @@ urlpatterns = [
     path('cliente/<str:pk>', ClienteDetailView.as_view(), name='info_cliente'),
     path('disponibilidad/<int:pk>', DisponibilidadDetailView.as_view(), name="info_disponibilidad"),
     path('disponibilidad/modificar/<int:pk>', ModificarDisponibilidad.as_view(), name='modificar_disponibilidad'),
-
+    path('buscaclientes/', SearchResultsListView.as_view(),name="buscaclientes" ),
 
 ]

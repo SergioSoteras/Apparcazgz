@@ -7,5 +7,9 @@
   <br>Nombre : {{cliente.nombre}}
   <br>Apellidos : {{cliente.apellidos}}
   <br>Vehiculo: {{cliente.vehiculo}}
-  
+{% if cliente.plaza == None %}
+  <br>Plaza de garaje : No tiene plaza
+{% else %}
+  <br>Plaza de garaje : {{cliente.plaza}}
+{% endif %}  
 {% endblock %}

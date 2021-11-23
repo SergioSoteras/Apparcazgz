@@ -116,3 +116,33 @@ class ModificarDisponibilidad(SuccessMessageMixin, generic.UpdateView):
     template_name = 'modificar_disponibilidad.html'
     success_url = '/parking/disponibilidad/'
     success_message = "Plaza %(plaza)s  se ha modificado correctamente"
+
+#Buscador de clientes por apellidos o nombre
+class SearchResultsListView(ListView):
+    model = Cliente
+    context_object_name = 'clientes'
+    template_name = 'search_results.html'  # No usará la plantilla estándar del ListView
+    paginate_by = 25
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q')
+        return context
+
+    def get_context_data2(self, **kwargs):
+        context = super().get_context_data2(**kwargs)
+        context['query2'] = self.request.GET.get('q2')
+        return context   
+
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        if query:
+            return Cliente.objects.filter(apellidos__icontains=query)
+        return []  # cuando entramos a buscar o si no se introduce nada
+
+    def get_queryset2(self): # new
+        query2 = self.request.GET.get('q2')
+        if query2:
+            return Cliente.objects.filter(nombre__icontains=query2)
+        return []  # cuando entramos a buscar o si no se introduce nada 
