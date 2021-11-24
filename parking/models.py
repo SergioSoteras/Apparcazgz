@@ -11,6 +11,17 @@ class Plaza(models.Model):
     def __str__(self):
         return f'{self.planta} - {self.numero}'
     
+    def disponible(self):
+        if len(self.cliente_set.all()) > 0 :
+            return False
+        else:
+            return True
+    def nombre_cliente(self):
+        if len(self.cliente_set.all()) > 0 :
+            return self.cliente_set.first()
+        else:
+            return ''
+    
     class Meta:
         pass
 

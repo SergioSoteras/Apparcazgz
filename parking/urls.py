@@ -4,6 +4,7 @@ from parking.views import *
 urlpatterns = [
     path('clientes/', ClientesListView.as_view(), name='listado_clientes'),
     path('disponibilidad/', DisponibilidadListView.as_view(), name='listado_disponibilidad'),
+    path('plazas/', PlazaListView.as_view(), name='listado_plazas'),
     path('cliente/modificar/<str:pk>', ModificarCliente.as_view(), name='modificar_cliente'),
     path('cliente/eliminar/<str:pk>', EliminarCliente.as_view(), name='eliminar_cliente'),
     path('cliente/crear', CrearCliente.as_view(), name='crear_cliente'),

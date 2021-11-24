@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from parking.views import contacto
 from parking.views import *
+import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,6 @@ urlpatterns = [
     # para autenticación
     path('accounts/', 
         include('django.contrib.auth.urls')),
-
+    path('__debug__/', include(debug_toolbar.urls)),
     
 ]
