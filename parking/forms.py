@@ -9,13 +9,6 @@ class ClienteForm(ModelForm):
         model=Cliente
         fields = '__all__'
 
-class DisponibilidadForm(ModelForm):
-    """
-    Formulario para modificar Disponibilidad
-    """
-    class Meta:
-        model=Disponibilidad
-        fields = '__all__'
 
 
     

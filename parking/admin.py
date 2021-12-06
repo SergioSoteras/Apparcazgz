@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Plaza, Cliente, Disponibilidad
+from .models import Plaza, Cliente, Dimensiones
 
 @admin.register(Plaza)
 class PlazaAdmin(admin.ModelAdmin):
@@ -21,7 +21,6 @@ class ClienteAdmin(admin.ModelAdmin):
     list_filter = ['nombre','apellidos']
     
 
-@admin.register(Disponibilidad)
-class DisponibilidadAdmin(admin.ModelAdmin):
-    list_display = ('plaza','cliente','estado')
-    list_filter = ['estado']
+@admin.register(Dimensiones)
+class DimensionesAdmin(admin.ModelAdmin):
+    list_display = ('tipo','anchura','largura')

@@ -1,12 +1,28 @@
 from django.db import models
 
 # Create your models here.
+class Dimensiones(models.Model):
+    '''
+    Las dimensiones de la plaza de garaje
+    '''
+    tipo = models.CharField(primary_key=True, max_length=8)
+    altura = models.IntegerField(blank=False,null=False)
+    anchura = models.DecimalField(max_digits=3,decimal_places=2,blank=False,null=False)
+    largura = models.DecimalField(max_digits=3,decimal_places=2,blank=False,null=False)
+
+    def __str__(self):
+        return f'{self.tipo} ({self.largura}m x {self.anchura}m x {self.altura}m)'
+
+        class Meta:
+            pass
+
 class Plaza(models.Model):
     '''
     La plaza de garaje
     '''
     planta = models.IntegerField(blank=False,null=False)
     numero = models.IntegerField(blank=False,null=False)
+    dimensiones = models.ForeignKey(Dimensiones, on_delete=models.RESTRICT,null=True,blank=True)
 
     def __str__(self):
         return f'{self.planta} - {self.numero}'
@@ -33,7 +49,7 @@ class Cliente(models.Model):
     nombre = models.CharField(max_length=30)
     apellidos = models.CharField(max_length=100)
     vehiculo = models.CharField(max_length=100)
-    plaza = models.ForeignKey(Plaza, on_delete=models.RESTRICT,null=True,blank=True)
+    plaza = models.ForeignKey(Plaza, on_delete=models.RESTRICT,unique=True,null=True,blank=True)
 
     def __str__(self):
         return f'{self.nombre} {self.apellidos}'
@@ -41,9 +57,10 @@ class Cliente(models.Model):
     
     class Meta:
         pass
+
 class Disponibilidad(models.Model):
     '''
-    Representa la plaza de garaje y el cliente que la tiene reservada
+    Ya no la uso porque no me hace falta, pero si la elimino me da errores.
     '''
     plaza = models.ForeignKey(Plaza, on_delete=models.RESTRICT,)
     cliente = models.ForeignKey(Cliente, on_delete=models.RESTRICT, null=True, blank=True)
@@ -72,5 +89,4 @@ class Disponibilidad(models.Model):
 
     class Meta:
         pass   
-    
     

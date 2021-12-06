@@ -5,7 +5,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from parking.models import *
 from parking.forms import *
-
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 # Create your views here.
 #contacto
 def contacto(request):
@@ -24,9 +25,9 @@ def indice(request):
     Pagina inicial de nuestra web
     '''
     num_disponibles = 0
-    disponibles = Disponibilidad.objects.all()
-    for disp in disponibles:
-            if (disp.estado == 'd'):
+    todas_plazas = Plaza.objects.all()
+    for plaza in todas_plazas:
+            if (plaza.disponible()):
                     num_disponibles += 1
 
     
@@ -42,7 +43,7 @@ def indice(request):
     return render(request, 'index.html', context=datos)
 
 #vista de un cliente
-class ClienteDetailView(generic.DetailView):
+class ClienteDetailView(LoginRequiredMixin,generic.DetailView):
     model = Cliente
 
 #lista clientes
@@ -68,16 +69,17 @@ def crear_cliente(request):
         context=datos)
 
 #crear cliente con generic
-class CrearCliente(SuccessMessageMixin, generic.CreateView):
+class CrearCliente(LoginRequiredMixin,PermissionRequiredMixin, SuccessMessageMixin, generic.CreateView):
     model = Cliente
     form_class = ClienteForm
-    
+    permission_required = 'cliente.add_choice'
+    raise_exception = True
     template_name = 'crear_cliente.html'
     success_url = '/parking/clientes/'
     success_message = "%(nombre)s %(apellidos)s se ha creado correctamente"
 
 # Modificar y Eliminar Cliente con SuccessMesaageMixin para mensaje de éxito.
-class ModificarCliente(SuccessMessageMixin, generic.UpdateView):
+class ModificarCliente(LoginRequiredMixin,SuccessMessageMixin, generic.UpdateView):
     model = Cliente
     fields = '__all__'
     
@@ -85,7 +87,7 @@ class ModificarCliente(SuccessMessageMixin, generic.UpdateView):
     success_url = '/parking/clientes/'
     success_message = "%(nombre)s %(apellidos)s se ha modificado correctamente"
 
-class EliminarCliente(generic.DeleteView):
+class EliminarCliente(LoginRequiredMixin,generic.DeleteView):
     model = Cliente
     template_name = 'cliente_confirmar_borrado.html'
     success_url = '/parking/clientes/'
@@ -95,35 +97,14 @@ class EliminarCliente(generic.DeleteView):
         messages.success(self.request, self.success_message)
         return super(EliminarCliente, self).delete(request, *args, **kwargs)
 
-#vista de disponibilidad
-class DisponibilidadDetailView(generic.DetailView):
-    model = Disponibilidad
-    
-#lista disponibilidad
-class DisponibilidadListView(generic.ListView):
-    '''
-    Vista generica para nuestra lista de disponibilidad de las plazas
-    '''
-    model = Disponibilidad
-    paginate_by = 27
 
-    #lista plazas
+#lista plazas
 class PlazaListView(generic.ListView):
     '''
     Vista generica para nuestra lista de disponibilidad de las plazas
     '''
     model = Plaza
     paginate_by = 27
-
-# Modificar Disponibilidad con SuccessMesaageMixin para mensaje de éxito.
-#Solo el admin, debes estar logueado
-#@login required
-class ModificarDisponibilidad(SuccessMessageMixin, generic.UpdateView):
-    model = Disponibilidad
-    fields = '__all__'
-    template_name = 'modificar_disponibilidad.html'
-    success_url = '/parking/disponibilidad/'
-    success_message = "Plaza %(plaza)s  se ha modificado correctamente"
 
 #Buscador de clientes por apellidos o nombre
 class SearchResultsListView(ListView):
@@ -150,4 +131,7 @@ class SearchResultsListView(ListView):
         else:
             return []
 
-    
+#Excepcion de permiso denegado.
+class PermissionDenied(Exception):
+    '''The user did not have permission to do that'''
+    pass
