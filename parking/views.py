@@ -7,6 +7,8 @@ from parking.models import *
 from parking.forms import *
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.hashers import make_password
+
 # Create your views here.
 #contacto
 def contacto(request):
@@ -47,7 +49,7 @@ class ClienteDetailView(LoginRequiredMixin,generic.DetailView):
     model = Cliente
 
 #lista clientes
-class ClientesListView(generic.ListView):
+class ClientesListView(LoginRequiredMixin, generic.ListView):
     '''
     Vista generica para nuestro listado de clientes
     '''
@@ -107,7 +109,7 @@ class PlazaListView(generic.ListView):
     paginate_by = 27
 
 #Buscador de clientes por apellidos o nombre
-class SearchResultsListView(ListView):
+class SearchResultsListView(LoginRequiredMixin,ListView):
     model = Cliente
     context_object_name = 'clientes'
     template_name = 'search_results.html'  # No usará la plantilla estándar del ListView
@@ -131,7 +133,19 @@ class SearchResultsListView(ListView):
         else:
             return []
 
-#Excepcion de permiso denegado.
-class PermissionDenied(Exception):
-    '''The user did not have permission to do that'''
-    pass
+
+#Funcion para crear users desde la web.
+def crear_usuario(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            messages.add_message(request, messages.SUCCESS,'Usuario creado.')
+            return redirect('/')
+    else:
+        form = RegistrationForm()   
+    return render(request, 'registrar.html', {'form':form})
+
