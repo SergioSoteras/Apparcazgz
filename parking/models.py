@@ -63,21 +63,6 @@ class Disponibilidad(models.Model):
     Ya no la uso porque no me hace falta, pero si la elimino me da errores.
     '''
     plaza = models.ForeignKey(Plaza, on_delete=models.RESTRICT,)
-    cliente = models.ForeignKey(Cliente, on_delete=models.RESTRICT, null=True, blank=True)
-    
-    LOAN_ESTADO = (
-        ('d','Disponible'),
-        ('nd','No disponible'),
-    )
-
-    estado = models.CharField(
-        max_length=14,
-        choices=LOAN_ESTADO,
-        blank=False,
-        default='Disponible',
-        help_text='Disponibilidad',
-    )
-
     class Meta:
         verbose_name='Estado de la plaza'
         verbose_name_plural='Estado de las plazas'

@@ -72,27 +72,27 @@ def crear_cliente(request):
 class CrearCliente(LoginRequiredMixin,PermissionRequiredMixin, SuccessMessageMixin, generic.CreateView):
     model = Cliente
     form_class = ClienteForm
-    permission_required = 'cliente.add_choice'
-    raise_exception = True
+    permission_required = 'parking.add_cliente'
+    
     template_name = 'crear_cliente.html'
     success_url = '/parking/clientes/'
     success_message = "%(nombre)s %(apellidos)s se ha creado correctamente"
 
 # Modificar y Eliminar Cliente con SuccessMesaageMixin para mensaje de éxito.
-class ModificarCliente(LoginRequiredMixin,SuccessMessageMixin, generic.UpdateView):
+class ModificarCliente(LoginRequiredMixin,PermissionRequiredMixin,SuccessMessageMixin, generic.UpdateView):
     model = Cliente
     fields = '__all__'
-    
+    permission_required = 'parking.change_cliente'
     template_name = 'modificar_cliente.html'
     success_url = '/parking/clientes/'
     success_message = "%(nombre)s %(apellidos)s se ha modificado correctamente"
 
-class EliminarCliente(LoginRequiredMixin,generic.DeleteView):
+class EliminarCliente(LoginRequiredMixin,PermissionRequiredMixin,generic.DeleteView):
     model = Cliente
     template_name = 'cliente_confirmar_borrado.html'
     success_url = '/parking/clientes/'
     success_message = "El cliente se ha borrado correctamente"
-
+    permission_required = 'parking.delete_cliente'
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(EliminarCliente, self).delete(request, *args, **kwargs)
