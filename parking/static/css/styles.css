@@ -326,11 +326,11 @@ div.grid-container div {
 
 .footer-basic {
     
-    background-color: rgb(147, 157, 133); 
+    background-color: rgb(240, 234, 234); 
     color:#4b4c4d;
     bottom: 0px;
-    position:fixed;
-    
+    width: 100%;
+    position: relative;
   }
   
   .footer-basic ul {
