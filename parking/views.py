@@ -16,7 +16,7 @@ def contacto(request):
     Pagina de contacto de nuestra web
     '''
     datos = {'autor':'Sergio Soteras',
-            'email': 'emaildecontacto@gmail.com',
+            'email': 'apparcazgz@gmail.com',
             'fax': '976542198'}
     
     return render(request, 'contacto.html', context=datos)

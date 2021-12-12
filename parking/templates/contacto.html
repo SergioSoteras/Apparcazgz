@@ -1,66 +1,79 @@
 {% extends "base.html" %}
 {% block title %}
-    <title>Pagina de Contacto</title>
+    <title>Página de Contacto</title>
 {% endblock %}
 {% block content %}
-    <h1>Pagina de Contacto</h1>
-    <ul>
-        <li>{{autor}}</li>
-        <li>{{email}}</li>
-        <li>{{fax}}</li>
-    </ul>    
-    <div class="contact_form">
+<style>
+*{box-sizing:border-box;}
 
-        <div class="formulario">      
-          <h1>Formulario de contacto</h1>
-            <h3>Escríbenos y en breve los pondremos en contacto contigo</h3>
+form{
+	width:800px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:#ccc;
+}
+
+form label{
+	width:80px;
+	font-weight:bold;
+	display:inline-block;
+}
+
+form input[type="text"],
+form input[type="email"]{
+	width:100%;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+}
+
+form input[type="submit"]{
+	width:100%;
+	padding:8px 16px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:5px;
+	display:block;
+	color:#fff;
+	background-color:#000;
+} 
+
+form input[type="submit"]:hover{
+	cursor:pointer;
+}
+
+textarea{
+	width:100%;
+	height:100px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;			
+	margin:8px 0;
+	/*resize: vertical | horizontal | none | both*/
+	resize:none;
+	display:block;
+}
+</style>
+    <h1>Página de Contacto</h1>   
+    <form action="#" target="" method="get" name="formDatosPersonales">
+
+      <label for="nombre">Nombre: </label>
+      <input type="text" name="nombre" id="nombre" placeholder="Escribe tu nombre"/>
     
+      <br></bt><label for="email">Email: </label>
+      <input type="email" name="email " id="email" placeholder="email" required />
     
-              <form action="submeter-formulario.php" method="post">       
+      <br><label for="asunto">Asunto: </label>
+      <input type ="text" name="asunto" id="asunto" placeholder="Asunto de la consulta"/>
     
-                
-                    <p>
-                      <label for="nombre" class="colocar_nombre">Nombre
-                        <span class="obligatorio">*</span>
-                      </label>
-                        <input type="text" name="introducir_nombre" id="nombre" required="obligatorio" placeholder="Escribe tu nombre">
-                    </p>
-                  
-                    <p>
-                      <label for="email" class="colocar_email">Email
-                        <span class="obligatorio">*</span>
-                      </label>
-                        <input type="email" name="introducir_email" id="email" required="obligatorio" placeholder="Escribe tu Email">
-                    </p>
-                
-                    <p>
-                      <label for="telefone" class="colocar_telefono">Teléfono
-                      </label>
-                        <input type="tel" name="introducir_telefono" id="telefono" placeholder="Escribe tu teléfono">
-                    </p>  
-                      
-                    <p>
-                      <label for="asunto" class="colocar_asunto">Asunto
-                        <span class="obligatorio">*</span>
-                      </label>
-                        <input type="text" name="introducir_asunto" id="assunto" required="obligatorio" placeholder="Escribe un asunto">
-                    </p>    
-                  
-                    <p>
-                      <label for="mensaje" class="colocar_mensaje">Mensaje
-                        <span class="obligatorio">*</span>
-                      </label>                     
-                                        <textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" required="obligatorio" placeholder="Deja aquí tu comentario..."></textarea> 
-                                    </p>                    
-                  
-                    <button type="submit" name="enviar_formulario" id="enviar"><p>Enviar</p></button>
-    
-                    <p class="aviso">
-                      <span class="obligatorio"> * </span>los campos son obligatorios.
-                    </p>          
-                
-              </form>
-        </div>  
-      </div>
+      <br><label for="mensaje">Mensaje: </label>
+      <textarea name="mensaje" for="mensaje" placeholder="Describe brevemente en menos de 300 carácteres" maxlength="300"></textarea>
+      
+      <input type="submit" name="enviar" value="Enviar datos"/>
+    </form>
     
 {% endblock %}
