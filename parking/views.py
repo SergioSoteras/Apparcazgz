@@ -8,6 +8,8 @@ from parking.forms import *
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.hashers import make_password
+import csv
+from django.http import HttpResponse
 
 # Create your views here.
 #contacto
@@ -149,3 +151,17 @@ def crear_usuario(request):
         form = RegistrationForm()   
     return render(request, 'registrar.html', {'form':form})
 
+# Vista para Descarga de clientes en CSV
+def descarga_csv_clientes(request):
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 
+            'attachment; filename="listado_clientes.csv"'},
+    )
+    clientes = Cliente.objects.all()#[:10] Para solo los 10 primeros
+    writer = csv.writer(response)
+    writer.writerow(['DNI','Nombre','Apellidos','Plaza'])
+    for cliente in clientes:
+        writer.writerow([cliente.dni, cliente.nombre, cliente.apellidos, cliente.plaza])
+
+    return response

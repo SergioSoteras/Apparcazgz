@@ -10,5 +10,6 @@ urlpatterns = [
     path('cliente/crear2', crear_cliente, name="crear_cliente2"),
     path('cliente/<str:pk>', ClienteDetailView.as_view(), name='info_cliente'),
     path('buscaclientes/', SearchResultsListView.as_view(),name="buscaclientes" ),
+    path('descarga_clientes', descarga_csv_clientes, name="descarga_clientes"),
 
 ]
