@@ -5,8 +5,9 @@
 {% block content %}
 
     <h2>Clientes: </h2>
+   
     <a href="{%url 'descarga_clientes' %}"> ------ Descargar Clientes en CSV ------</a>
-    <ul>
+    <ul style="list-style: none">
         {% for cliente in object_list %}
         <li>
         {% if user.username == 'admin' %}      
@@ -35,6 +36,7 @@
                 <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">-- Siguiente</a>
             {% endif %}
         </span>
-    </div>
+    
+
 {% endif %}
 {% endblock %}

@@ -33,7 +33,7 @@
         {% endif %}
         aria-label="Search">
 </form>
-<!-- fin formuoario-->
+<!-- fin formulario-->
 <div class="row mt-4">
 <hr>
 <div class="col-md-12">
@@ -41,7 +41,7 @@
 <h3 class="error">Clientes no encontrados</h3>
 {% else %}
 
-<ul>
+<ol>
     {% for cliente in clientes %}
     <li>
         {% if user.username == 'admin' %} 
@@ -55,7 +55,7 @@
       <a href="{%url 'info_cliente' cliente.dni %}">{{cliente.nombre}} {{cliente.apellidos}}  -- {{cliente.vehiculo}}</a></li>
 
     {% endfor %}
-</ul>
+</ol>
     {% if is_paginated %}
         <div class="pagination">
             <span class="page-links">

@@ -4,13 +4,13 @@
 {% endblock %}
 {% block content %}
   <h1>{{cliente.dni}}</h1>
-  <br>Nombre : {{cliente.nombre}}
-  <br>Apellidos : {{cliente.apellidos}}
-  <br>Vehiculo: {{cliente.vehiculo}}
+  <p><b>Nombre : </b>{{cliente.nombre}}
+  <br><b>Apellidos : </b> {{cliente.apellidos}}
+  <br><b>Vehiculo: </b> {{cliente.vehiculo}}
 {% if cliente.plaza == None %}
-  <br>Plaza de garaje : No tiene plaza
+  <br><b>Plaza de garaje :</b> No tiene plaza
 {% else %}
-  <br>Plaza de garaje : {{cliente.plaza}}
-  <br>Dimensiones de la plaza : {{cliente.plaza.dimensiones}}
+  <br><b>Plaza de garaje : </b>{{cliente.plaza}}
+  <br><b>Dimensiones de la plaza : </b>{{cliente.plaza.dimensiones}}</p>
 {% endif %}  
 {% endblock %}
