@@ -25,7 +25,7 @@ class Plaza(models.Model):
     dimensiones = models.ForeignKey(Dimensiones, on_delete=models.RESTRICT,null=True,blank=True)
 
     def __str__(self):
-        return f'Planta {self.planta}, Plaza {self.numero}'
+        return f'Plaza {self.numero} ( Planta {self.planta} )'
     
     def disponible(self):
         if len(self.cliente_set.all()) > 0 :
