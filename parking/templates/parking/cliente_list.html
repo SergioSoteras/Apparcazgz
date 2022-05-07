@@ -5,9 +5,10 @@
 {% block content %}
 
     <h2>Clientes: </h2>
-   
+    <span class="badge bg-success">
     <a href="{%url 'descarga_clientes' %}"> ------ Descargar Clientes en CSV ------</a>
-    <ul style="list-style: none">
+    </span><hr>
+    <ul style="list-style: none ">
         {% for cliente in object_list %}
         <li>
         {% if user.username == 'admin' %}      

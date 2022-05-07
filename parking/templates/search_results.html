@@ -19,6 +19,7 @@
             value = {{query}}
         {% endif %}
         aria-label="Search">
+        <button type="submit">Buscar</button>
 </form>
 <br><h3>Búsqueda por nombre: </h3>
 <form class="form-inline mt-2 mt-md-0" action="{% url 'buscaclientes' %}"
@@ -32,8 +33,9 @@
             value = {{query2}}
         {% endif %}
         aria-label="Search">
+        <button type="submit">Buscar</button>
 </form>
-<!-- fin formulario-->
+<!-- fin formuoario-->
 <div class="row mt-4">
 <hr>
 <div class="col-md-12">
@@ -41,7 +43,7 @@
 <h3 class="error">Clientes no encontrados</h3>
 {% else %}
 
-<ol>
+<ul>
     {% for cliente in clientes %}
     <li>
         {% if user.username == 'admin' %} 
@@ -55,7 +57,7 @@
       <a href="{%url 'info_cliente' cliente.dni %}">{{cliente.nombre}} {{cliente.apellidos}}  -- {{cliente.vehiculo}}</a></li>
 
     {% endfor %}
-</ol>
+</ul>
     {% if is_paginated %}
         <div class="pagination">
             <span class="page-links">
