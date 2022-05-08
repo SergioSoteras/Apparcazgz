@@ -12,5 +12,8 @@
 {% else %}
   <br><b>Plaza de garaje : </b>{{cliente.plaza}}
   <br><b>Dimensiones de la plaza : </b>{{cliente.plaza.dimensiones}}</p>
+  {% if user.username == 'admin' %}      
+  <span class="badge bg-secondary"><a href={% url 'modificar_cliente' cliente.dni %}> [<-- Editar -->] </a></span>
+  {% endif %}
 {% endif %}  
 {% endblock %}

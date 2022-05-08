@@ -13,8 +13,8 @@ class Dimensiones(models.Model):
     def __str__(self):
         return f'{self.tipo} ({self.largura}m x {self.anchura}m x {self.altura}m)'
 
-        class Meta:
-            pass
+    class Meta:
+        pass
 
 class Plaza(models.Model):
     '''
@@ -37,7 +37,14 @@ class Plaza(models.Model):
             return self.cliente_set.first()
         else:
             return ''
-    
+    def limit_plazas():
+        plazas_disp =[]
+        todas_plazas = Plaza.objects.all()
+        for plaza in todas_plazas:
+            if (plaza.disponible()):
+                plazas_disp.append(plaza)
+        return plazas_disp
+
     class Meta:
         pass
 
@@ -49,7 +56,7 @@ class Cliente(models.Model):
     nombre = models.CharField(max_length=30)
     apellidos = models.CharField(max_length=100)
     vehiculo = models.CharField(max_length=100)
-    plaza = models.ForeignKey(Plaza, on_delete=models.RESTRICT,unique=True,null=True,blank=True)
+    plaza = models.ForeignKey(Plaza, on_delete=models.RESTRICT,unique=True,null=True,blank=True) 
 
     def __str__(self):
         return f'{self.nombre} {self.apellidos}'

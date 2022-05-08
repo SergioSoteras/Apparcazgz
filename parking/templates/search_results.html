@@ -40,10 +40,7 @@
 <div class="row mt-4">
 <hr>
 <div class="col-md-12">
-{%if noencontrado %} 
-<h3 class="error">Clientes no encontrados</h3>
-{% else %}
-
+{% if clientes %} 
 <ul>
     {% for cliente in clientes %}
     <li>
@@ -74,7 +71,8 @@
             </span>
         </div>
     {% endif %}
-
+{% else %}
+    <h3 class="text-danger">Clientes no encontrados  :( </h3>
 {% endif %}
 </div>
 </div>
