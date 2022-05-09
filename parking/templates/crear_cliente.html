@@ -3,12 +3,14 @@
 {% block content %}
   <h1>Crear nuevo cliente</h1>
 {% load static %}
+<div style="display: flex; flex-direction: row; flex-wrap: wrap;">
   <form action="" method="post">
     {% csrf_token %}
     <table>
-    {{ form.as_table }}
+      {{ form.as_table }}
     </table>
     <input type="submit" value="Crear">
   </form>
-  <img class="img-fluid" src="{% static 'imagenes/avatar.jpg' %}"/>
+  <img class="img-fluid resp" src="{% static 'imagenes/avatar.jpg' %}"/>
+</div>
 {% endblock %}

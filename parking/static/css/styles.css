@@ -451,6 +451,11 @@ div.grid-container div {
   padding: 1em;
   height: auto;
   width: fit-content;
+
+}
+/*Imagen responsive*/
+.resp {
+margin-left: 2em;
 }
 
 /* On screens that are 992px or less, set the background color to blue */
@@ -471,8 +476,9 @@ div.grid-container div {
     margin: 3em;
   }
 
-  #mapa {
-
+  .resp {
+    margin-left: 0;
+    margin-top: 2em;
   }
 }
 
@@ -485,6 +491,10 @@ div.grid-container div {
   .panel {
     margin: 2em;
 
+  }
+  .resp {
+    margin-left: 0;
+    margin-top: 2em;
   }
 }
 
