@@ -3,7 +3,11 @@
     <title>{{cliente.nombre}}</title>
 {% endblock %}
 {% block content %}
-  <h1>{{cliente.dni}}</h1>
+{% if user.username == 'admin' %}
+  <h1>DNI: {{cliente.dni}}</h1>
+{% else %}
+<span class="badge bg-warning"><h3>Por motivos de seguridad y de protección de datos se ha ocultado el DNI.</h3></span>
+{% endif %}
   <p><b>Nombre : </b>{{cliente.nombre}}
   <br><b>Apellidos : </b> {{cliente.apellidos}}
   <br><b>Vehiculo: </b> {{cliente.vehiculo}}
