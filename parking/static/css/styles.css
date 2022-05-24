@@ -464,9 +464,7 @@ margin-left: 2em;
 
 /* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 992px) {
-  body {
-    background-color: blue !important;
-  }
+
   .grid-container {
     grid-template-rows: 60px 60px 60px;
     grid-template-columns: 45px 45px 45px 45px 45px 45px 45px 20px;
@@ -488,9 +486,6 @@ margin-left: 2em;
 
 /* On screens that are 600px or less, set the background color to olive */
 @media screen and (max-width: 600px) {
-  body {
-    background-color: red !important;
-  }
 
   .panel {
     margin: 2em;
