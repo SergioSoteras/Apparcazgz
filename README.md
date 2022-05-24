@@ -1,4 +1,4 @@
-ApparcaZgZ
+Apparking
 Se trata de una aplicación web que gestiona un parking para una comunidad de vecinos, en el que puedes comprobar cuantas plazas hay disponibles y los clientes que tiene.
 
 Para poder ver los clientes del parking, es necesario hacer login.
