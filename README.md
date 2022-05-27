@@ -14,7 +14,7 @@ Para poder ver los clientes del parking, es necesario hacer login.
 
   <https://www.python.org/downloads>
 
-1. Creamos un Entorno Virtual
+2. Creamos un Entorno Virtual
 - Linux :
 
   sudo apt-get install python3-venv
@@ -29,7 +29,7 @@ Para poder ver los clientes del parking, es necesario hacer login.
 
   python –m venv env
 
-1. Activar el Entorno Virtual
+3. Activar el Entorno Virtual
 - Linux / Mac :
 
   source env/bin/activate
@@ -38,17 +38,17 @@ Para poder ver los clientes del parking, es necesario hacer login.
 
 env\Scripts\activate.bat
 
-1. Instalar Django y dependencias
+4. Instalar Django y dependencias
 
   pip install Django
 
   pip install requirements.txt
 
-1. Crear superuser
+5. Crear superuser
 
   py manage.py createsuperuser
 
   Es importante que el username sea admin
 
-1. py manage.py runserver
+6. py manage.py runserver
 
