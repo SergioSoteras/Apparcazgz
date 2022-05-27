@@ -438,7 +438,8 @@ div.grid-container div {
   position: absolute;
   top: 0px;
   left: 0px;
-  background-image: url(https://fincasatrisa.es/wp-content/uploads/2013/09/plazagaraje.jpg);
+  /* background-image: url(https://fincasatrisa.es/wp-content/uploads/2013/09/plazagaraje.jpg); */
+  background-image: url('../imagenes/garaje.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.3;
