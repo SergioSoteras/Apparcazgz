@@ -10,9 +10,9 @@ Para poder ver los clientes del parking, es necesario hacer login.
 ## MANUAL DE INSTALACIÓN
 1. Instalacion de Python
 
-  Descargaremos la version python 3.10 o superior
+  - Descargaremos la version python 3.10 o superior
 
-  <https://www.python.org/downloads>
+  - <https://www.python.org/downloads>
 
 2. Creamos un Entorno Virtual
 - Linux :
@@ -36,19 +36,19 @@ Para poder ver los clientes del parking, es necesario hacer login.
 
 - Windows :
 
-env\Scripts\activate.bat
+  env\Scripts\activate.bat
 
 4. Instalar Django y dependencias
 
-  pip install Django
+  - pip install Django
 
-  pip install requirements.txt
+  - pip install requirements.txt
 
 5. Crear superuser
 
-  py manage.py createsuperuser
+  - py manage.py createsuperuser
 
-  Es importante que el username sea admin
+  - Es importante que el username sea ***admin***
 
 6. py manage.py runserver
 
