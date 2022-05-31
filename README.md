@@ -1,10 +1,9 @@
 Apparking
-Se trata de una aplicación web que gestiona un parking para una comunidad de vecinos, en el que puedes comprobar cuantas plazas hay disponibles y los clientes que tiene.
+El proyecto Apparking es una aplicación web que nace de la necesidad de una comunidad de gestionar su aparcamiento subterráneo, que ofrece al administrador la posibilidad de distribuir las plazas de aparcamiento y los clientes.
 
-Para poder ver los clientes del parking, es necesario hacer login.
+El funcionamiento de la aplicación comienza con el superuser, al que se ha llamado admin, el cual tendrá acceso al panel de control del admin añadiendo /admin al path, donde podrá crear las plazas, clientes y dimensiones de las plazas. También dispone de un formulario en la aplicación para crear clientes de manera más sencilla y rápida.
 
-Únicamente el admin puede crear, modificar o añadir clientes así como gestionar las plazas disponibles, de hecho, la página web tiene restringida muchas opciones de accesos rápidos a la hora de gestionar los clientes y las plazas al usuario admin.
-
+Los clientes podrán visualizar el plano del aparcamiento en directo, donde podrán comprobar cuantas plazas quedan disponibles, comprobar el cliente de una plaza ocupada y el listado de clientes del aparcamiento.
 
 ********
 ## MANUAL DE INSTALACIÓN
