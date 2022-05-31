@@ -1,4 +1,4 @@
-Apparking
+## Apparking
 El proyecto Apparking es una aplicación web que nace de la necesidad de una comunidad de gestionar su aparcamiento subterráneo, que ofrece al administrador la posibilidad de distribuir las plazas de aparcamiento y los clientes.
 
 El funcionamiento de la aplicación comienza con el superuser, al que se ha llamado admin, el cual tendrá acceso al panel de control del admin añadiendo /admin al path, donde podrá crear las plazas, clientes y dimensiones de las plazas. También dispone de un formulario en la aplicación para crear clientes de manera más sencilla y rápida.
