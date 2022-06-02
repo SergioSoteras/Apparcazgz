@@ -6,6 +6,18 @@ El funcionamiento de la aplicación comienza con el superuser, al que se ha llam
 Los clientes podrán visualizar el plano del aparcamiento en directo, donde podrán comprobar cuantas plazas quedan disponibles, comprobar el cliente de una plaza ocupada y el listado de clientes del aparcamiento.
 
 ********
+
+The main purpose of ‘Apparking’ is to offer a tailored management of a parking lot in a quick and easy way.
+
+It allows a single customisation of the parking lot adjusted to the layout of the parking spaces, which makes the application unique and innovative. You can check the availability of parking spaces at a glance and find out which customer is occupying them.
+
+You are also one click away from checking the customers in the parking lot, seeing their details and editing them.
+
+It has a role-based access control (RBAC) based on a security function to control user access to tasks usually restricted to the superuser (admin).
+
+Currently, only the admin can modify the application data, but in the future, it will have a payment gateway so that users can also book and pay for their parking slots.
+
+********
 ## MANUAL DE INSTALACIÓN
 1. Instalacion de Python
 
